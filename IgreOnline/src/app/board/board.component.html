@@ -1,0 +1,7 @@
+<div class="row" *ngFor="let value of values">{{value}}</div>
+
+<table id="boardTable">
+    <tr *ngFor="let value of values">
+        <td *ngFor="let value of srcImages"><img src="../../assets/{{value}}" alt='{{value}}'></td>
+    </tr>
+</table>
