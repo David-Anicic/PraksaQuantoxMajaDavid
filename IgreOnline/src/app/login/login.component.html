@@ -1,0 +1,23 @@
+<br>
+<div class="login">
+    <div id="header">
+        <h2>
+            Already have an account?
+        </h2>
+          <h3>Login to QuantoXO</h3>
+      </div>
+      <br>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+              <label for="username">Username:</label>
+              <input class="form-control user" type="text" name="username" id="username1" formControlName="loginUsername"/>
+        </div>
+         <div class="form-group clearfix">
+              <label for="password">Password:</label>
+              <input class="form-control pass" type="password" name="password" id="password1" formControlName="loginPassword"/>
+              <br>
+              <button class="btn btn-lg btn-secondary" type="submit">Login</button>
+        </div>            
+      </form>
+  </div>
+  <br>
