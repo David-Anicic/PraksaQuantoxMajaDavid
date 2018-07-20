@@ -4,6 +4,7 @@ import { AuthPageComponent } from '../auth-page/auth-page.component';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from '../app.component';
 import { HomeComponent } from '../home/home.component';
+import { BoardComponent } from '../board/board.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,10 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent
+  },
+  {
+    path: 'board',
+    component: BoardComponent
   }
 ];
 

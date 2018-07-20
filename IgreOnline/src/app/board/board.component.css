@@ -1,5 +1,15 @@
+body
+{
+    width: 70%;
+    height: auto;
+}
+
 #boardTable
 {
-    width: 80%;
-    height: 30%;
+    margin: auto;
+}
+
+#boardTable td
+{
+    padding: 1%;
 }
