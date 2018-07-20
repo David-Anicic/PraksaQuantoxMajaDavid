@@ -1,1 +1,1 @@
-PraksaQuantoxMajaDavid
+Ovaj repozitorijum predstavlja Frontend aplikacije
