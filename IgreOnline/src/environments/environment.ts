@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  serverUrl: 'http://localhost:8080/Backend-master'
+  serverUrl: 'http://tictactoe.local:8000/api/'
 };
 
 /*

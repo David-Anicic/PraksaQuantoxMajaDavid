@@ -1,10 +1,19 @@
-<div class="row" *ngFor="let value of values">{{value}}</div>
-
-<table id="boardTable">
-    <tr *ngFor="let value1 of values">
-        <td *ngFor="let value2 of values" (click)="clicked(value1, value2)"><img src="../../assets/{{m[value1][value2]}}" width="150px"></td>
-    </tr>
-</table>
-<div *ngIf="gameOver">
-    <p style="color:red;margin:auto;">Game over!</p>
+<div class='mainDiv'>
+    <div class='part' id="boardTable">
+        <table>
+            <tr *ngFor="let value1 of values">
+                <td *ngFor="let value2 of values" (click)="clicked(value1, value2)" height="150px"><img src="../../assets/{{m[value1][value2]}}" width="150px"></td>
+            </tr>
+        </table>
+        <div *ngIf="gameOver">
+            <p style="color:red;margin:auto;">Game over!</p>
+        </div>
+    </div>
+    <div class='part' id='list'>
+        <select [(ngModel)]="selectedUser" id="selUser">
+            <option value="" disabled selected>select a user</option>
+            <option *ngFor="let user of users" [value]="user.name">{{user.name}}</option>
+        </select>
+        <button type='submit' id='dugme'>Start the game</button>
+    </div>
 </div>
