@@ -7,8 +7,8 @@ import { RegisterComponent } from './register/register.component';
 import { AuthPageComponent } from './auth-page/auth-page.component';
 import { AuthService } from './auth.service';
 import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from './/app-routing/app-routing.module';
-import { FormsModule, ReactiveFormsModule } from '../../node_modules/@angular/forms';
+import { AppRoutingModule } from './app-routing/app-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { BoardComponent } from './board/board.component';
 

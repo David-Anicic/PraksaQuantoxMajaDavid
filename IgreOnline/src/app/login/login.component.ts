@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../../user';
+import { User } from 'User';
 import { AuthService } from '../auth.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,39 +12,18 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
-  user: User = {
-    name: '',
-    password: ''
-  };
 
-  constructor(private auth: AuthService, private fb: FormBuilder) {
-    this.createForm();
+  email: string;
+  password: string;
+
+  constructor(private auth: AuthService, private fb: FormBuilder, private router: Router) {
   }
 
-  createForm() {
-    this.loginForm = this.fb.group({
-      loginUsername: '',
-      loginPassword: ''
+  login() {
+    this.auth.login(this.email, this.password).subscribe(data => {
+      localStorage.setItem('token', data['token_type'] + ' ' + data['access_token']);
+      this.router.navigate(['/board']);
     });
-  }
-
-
-  public onSubmit(): void {
-    this.user.password = this.loginForm.get('loginPassword').value;
-    this.user.name = this.loginForm.get('loginUsername').value;
-    if (this.loginForm.valid) {
-      this.auth.login(this.user).subscribe(res => {
-        if (res.status === 'ok') {
-          if (res.token) {
-            localStorage.setItem('token', res.token);
-            window.location.href = '/';
-            // this.onSuccess();
-          }
-      } else {
-      //  this.onError(res.message);
-      }
-      });
-    }
   }
 
   ngOnInit() {

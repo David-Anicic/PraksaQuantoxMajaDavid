@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'user';
+import { User } from 'User';
 import { AuthService } from '../auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -10,38 +11,29 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
-  registerForm: FormGroup;
-  user: User = {
-    name: '',
-    password: '',
-    email: ''
-  };
+  user: User = new User();
 
-  constructor(private auth: AuthService, private fb: FormBuilder) {
+  password: '';
+  password_confirmation: '';
 
+  constructor(private auth: AuthService, private fb: FormBuilder, private router: Router) {
   }
 
-  createForm() {
+  register() {
+    this.auth.register(this.user.name, this.user.email, this.user.password, this.password_confirmation).subscribe(data => {
+      this.router.navigate(['/board']);
+      console.log('registracija');
+    });
+  }
 
-  }
-  public onSubmit(): void {
-    this.user.name = this.registerForm.get('registerUsername').value;
-    this.user.password = this.registerForm.get('registerPassword').value;
-    this.user.email = this.registerForm.get('registerEmail').value;
-    if (this.registerForm.valid) {
-      this.auth.login(this.user).subscribe(res => {
-        if (res.status === 'ok') {
-          if (res.token) {
-            localStorage.setItem('token', res.token);
-            window.location.href = '/';
-            // this.onSuccess();
-          }
-      } else {
-      //  this.onError(res.message);
-      }
-      });
-    }
-  }
+
+  // register() {
+  //   this.auth.register(this.user, this.password, this.password_confirmation).subscribe(data => {
+  //     this.router.navigate(['/login']);
+  //     console.log('registracija');
+  //   });
+  // }
+
   ngOnInit() {
   }
 

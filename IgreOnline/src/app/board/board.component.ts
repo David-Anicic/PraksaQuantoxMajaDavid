@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { User } from 'user';
+import { User } from 'User';
 
 @Component({
   selector: 'app-board',
@@ -11,9 +11,9 @@ import { User } from 'user';
 })
 export class BoardComponent implements OnInit {
 
-  values: number[] = [0,1,2];
-  srcImages: number[][] = [[0],[0],[0],[0],[0],[0],[0],[0]];
-  m: string[][] = [["blank.png"],["blank.png"],["blank.png"],["blank.png"],["blank.png"],["blank.png"],["blank.png"],["blank.png"]];
+  values: number[] = [0, 1, 2];
+  srcImages: number[][] = [[0], [0], [0], [0], [0], [0], [0], [0]];
+  m: string[][] = [['blank.png'], ['blank.png'], ['blank.png'], ['blank.png'], ['blank.png'], ['blank.png'], ['blank.png'], ['blank.png']];
   player: number;
   gameOver: boolean;
   users: User[] = [];
@@ -26,28 +26,29 @@ export class BoardComponent implements OnInit {
     this.gameOver = false;
     for (let i = 0; i < 3; i++) {
       for (let j = 0; j < 3; j++) {
-          this.srcImages[i][j] = 0; 
-          this.m[i][j] = "blank.png";
+          this.srcImages[i][j] = 0;
+          this.m[i][j] = 'blank.png';
       }
     }
 
     this.getAllUsers().subscribe(odgovor => {
       console.log(odgovor['data']);
       this.users = odgovor['data'];
-      //console.log(this.users);
+      // console.log(this.users);
     });
   }
 
-  clicked(x:number, y:number): void {
-    if (this.srcImages[x][y] == 0)
-    if (this.player == 1) {
+  clicked(x: number, y: number): void {
+    if (this.srcImages[x][y] === 0) {
+    if (this.player === 1) {
       this.srcImages[x][y] = 1;
-      this.m[x][y] = "x.png";
+      this.m[x][y] = 'x.png';
       this.player = 0;
     } else {
       this.srcImages[x][y] = 2;
       this.player = 1;
-      this.m[x][y] = "o.png";
+      this.m[x][y] = 'o.png';
+    }
     }
 
     this.checkStateOfTheMatrix();
@@ -55,21 +56,19 @@ export class BoardComponent implements OnInit {
 
   getAllUsers(): Observable<User[]> {
     const bearerHeader: string = 'Bearer ' + '';
-    let headers = new HttpHeaders().set('Authorization', bearerHeader);
-    
-    let url = environment.serverUrl + 'users';
+
+    const headers = new HttpHeaders().set('Authorization', bearerHeader);
+    const url = environment.serverUrl + 'users';
     console.log(url);
-    let formData = new FormData();
-
-		//formData.append('username', "");
-
-		return this.http.get<User[]>(url);
+    const formData = new FormData();
+    // formData.append('username', "");
+    return this.http.get<User[]>(url);
   }
 
   checkStateOfTheMatrix(): void {
     for (let i = 0; i < 3; i++) {
       for (let j = 0; j < 3; j++) {
-        if (this.srcImages[i][j] == 0) {
+        if (this.srcImages[i][j] === 0) {
           return;
         }
       }
