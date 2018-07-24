@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.auth.login(this.email, this.password).subscribe(data => {
-      localStorage.setItem('token', data['token_type'] + ' ' + data['access_token']);
+      localStorage.setItem('token', data['access_token']);
       this.router.navigate(['/board']);
     });
   }

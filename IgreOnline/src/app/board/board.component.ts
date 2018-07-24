@@ -41,17 +41,16 @@ export class BoardComponent implements OnInit {
 
   clicked(x: number, y: number): void {
     if (this.srcImages[x][y] === 0) {
-    if (this.player === 1) {
-      this.srcImages[x][y] = 1;
-      this.m[x][y] = 'x.png';
-      this.player = 0;
-    } else {
-      this.srcImages[x][y] = 2;
-      this.player = 1;
-      this.m[x][y] = 'o.png';
+      if (this.player === 1) {
+        this.srcImages[x][y] = 1;
+        this.m[x][y] = 'x.png';
+        this.player = 0;
+      } else {
+        this.srcImages[x][y] = 2;
+        this.player = 1;
+        this.m[x][y] = 'o.png';
+      }
     }
-    }
-
     this.checkStateOfTheMatrix();
   }
 

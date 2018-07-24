@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { BoardComponent } from './board/board.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { BoardComponent } from './board/board.component';
     RegisterComponent,
     AuthPageComponent,
     HomeComponent,
-    BoardComponent
+    BoardComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
