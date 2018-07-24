@@ -27,13 +27,6 @@ export class RegisterComponent implements OnInit {
   }
 
 
-  // register() {
-  //   this.auth.register(this.user, this.password, this.password_confirmation).subscribe(data => {
-  //     this.router.navigate(['/login']);
-  //     console.log('registracija');
-  //   });
-  // }
-
   ngOnInit() {
   }
 
