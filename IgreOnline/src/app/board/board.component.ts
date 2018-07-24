@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { User } from 'User';
+import { StartPlayTheGameService } from '../start-play-the-game.service';
 
 @Component({
   selector: 'app-board',
@@ -19,7 +20,7 @@ export class BoardComponent implements OnInit {
   users: User[] = [];
   selectedUser: User;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private startPlayService: StartPlayTheGameService) { }
 
   ngOnInit() {
     this.player = 1;
@@ -75,5 +76,15 @@ export class BoardComponent implements OnInit {
     }
 
     this.gameOver = true;
+  }
+
+  startTheGame(): void
+  {
+    console.log("usao")
+    console.log(this.selectedUser)
+    this.startPlayService.startTheGame(this.selectedUser.id).subscribe(odgovor =>
+    {
+      console.log(odgovor);
+    });
   }
 }

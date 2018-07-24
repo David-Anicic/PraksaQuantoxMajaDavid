@@ -12,8 +12,8 @@
     <div class='part' id='list'>
         <select [(ngModel)]="selectedUser" id="selUser">
             <option value="" disabled selected>select a user</option>
-            <option *ngFor="let user of users" [value]="user.name">{{user.name}}</option>
+            <option *ngFor="let user of users" [ngValue]="user">{{user.name}}</option>
         </select>
-        <button class="btn btn-lg btn-secondary" type='submit' id='dugme'>Start the game</button>
+        <button class="btn btn-lg btn-secondary" type='submit' id='dugme' (click)='startTheGame()'>Start the game</button>
     </div>
 </div>
