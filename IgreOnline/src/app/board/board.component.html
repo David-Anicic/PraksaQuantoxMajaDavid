@@ -17,5 +17,6 @@
             <option *ngFor="let user of users" [ngValue]="user">{{user.name}}</option>
         </select>
         <button class="btn btn-lg btn-secondary" type='submit' id='dugme' (click)='startTheGame()'>Start the game</button>
+        <p *ngIf='gameCreatedSucc' id='msgGameCreated'>Game created successfully!</p>
     </div>
 </div>

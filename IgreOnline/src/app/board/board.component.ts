@@ -19,6 +19,7 @@ export class BoardComponent implements OnInit {
   gameOver: boolean;
   users: User[] = [];
   selectedUser: User;
+  gameCreatedSucc: boolean;
 
   constructor(private http: HttpClient, private startPlayService: StartPlayTheGameService) { }
 
@@ -37,6 +38,8 @@ export class BoardComponent implements OnInit {
       this.users = odgovor['data'];
       // console.log(this.users);
     });
+
+    this.gameCreatedSucc = false;
   }
 
   clicked(x: number, y: number): void {
@@ -55,7 +58,7 @@ export class BoardComponent implements OnInit {
   }
 
   getAllUsers(): Observable<User[]> {
-    const bearerHeader: string = 'Bearer ' + '';
+    const bearerHeader: string = 'Bearer ' + localStorage.getItem('token');
 
     const headers = new HttpHeaders().set('Authorization', bearerHeader);
     const url = environment.serverUrl + 'users';
@@ -84,6 +87,10 @@ export class BoardComponent implements OnInit {
     this.startPlayService.startTheGame(this.selectedUser.id).subscribe(odgovor =>
     {
       console.log(odgovor);
+      if (odgovor != undefined) {
+        console.log("dobro je"); this.gameCreatedSucc = true; }
+      else {
+        console.log("nije dobro"); this.gameCreatedSucc = false; }
     });
   }
 }

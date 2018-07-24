@@ -12,7 +12,7 @@ export class StartPlayTheGameService {
 
   startTheGame(id: number): Observable<any>
   {
-    const bearerHeader: string = 'Bearer ' + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6Ly90aWN0YWN0b2UubG9jYWw6ODAwMC9hcGkvdXNlcnMvbG9naW4iLCJpYXQiOjE1MzI0MjkwMTksImV4cCI6MTUzMjQzMjYxOSwibmJmIjoxNTMyNDI5MDE5LCJqdGkiOiJWQWU4Q2JyVFc0VFBWUEhaIn0.3N6top2upa9I5jOWub8XNcRAdt5bbh7M10dBiH29EyU';
+    const bearerHeader: string = 'Bearer ' + localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', bearerHeader);
     headers.set('Accept', 'application/json');
 

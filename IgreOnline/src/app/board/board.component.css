@@ -46,3 +46,9 @@ option {
 #players {
     color: white;
 }
+
+#msgGameCreated
+{
+    color: green;
+    margin-top: 5px;
+}
