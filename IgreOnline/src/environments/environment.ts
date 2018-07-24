@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  serverUrl: 'http://tictactoe.local:8000/api/'
-  //serverUrl: 'http://gamexoxo:8080/api/'
+  // serverUrl: 'http://tictactoe.local:8000/api/'
+  serverUrl: 'http://gamexoxo:8080/api/'
 };
 
 /*
