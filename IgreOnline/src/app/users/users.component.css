@@ -7,6 +7,7 @@
     display: table;
     border: 1px solid green;
     border-radius: 5px;
+    color:white;
 }
 
 option {
@@ -15,8 +16,27 @@ option {
     color: green;
 }
 
-#constainer {
+.constainer {
     margin: 0 auto;
     position: relative;
     left: 100px;
+    color: white;
+}
+
+#acc {
+    background-color: green;
+    color: white;
+    width: 100px;
+    height: 30px;
+}
+
+#can {
+    background-color: red;
+    color: white;
+    width: 100px;
+    height: 30px;
+}
+
+h2 {
+    color: white;
 }

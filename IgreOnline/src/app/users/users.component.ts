@@ -52,10 +52,11 @@ export class UsersComponent implements OnInit {
       console.log(data);
       if (this.challenges.filter(ch => (ch.challenger.id === data.challenger.id)).length === 0) {
         this.challenges.push(data);
+        console.log(this.challenges);
       }
     });
     this.gameService.getGame().subscribe(data => {
-      console.log(data);
+      // console.log(data);
       // this.router.navigate(['/board']);
     }, (error: HttpErrorResponse) => {
     });
@@ -72,13 +73,15 @@ export class UsersComponent implements OnInit {
       window.Echo.private('challenge.' + data['pivot']['id']).listen('GameEvent', (data2) => {
         console.log(data2);
       });
-     // this.router.navigate(['/game']);
+      // this.router.navigate(['/board']);
     });
   }
 
   accept(challenge) {
-    // this.gameService.acceptChallenge(challenge.challenge_id).subscribe(data => {
-    //   console.log(data);
-    // });
+    console.log(challenge.challenger['id']);
+    this.gameService.acceptChallenge(challenge.challenger['id']).subscribe(data => {
+      console.log(data);
+      this.router.navigate(['/board']);
+    });
   }
 }

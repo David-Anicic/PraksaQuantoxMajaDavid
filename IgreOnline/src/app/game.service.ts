@@ -40,6 +40,7 @@ export class GameService {
   acceptChallenge(id) {
     let header = new HttpHeaders();
     header = header.set('Authorization', 'Bearer ' + localStorage.getItem('token'));
-    return this.http.get(environment.serverUrl + 'challenges/accept/' + id, {headers: header});
+    const fd = new FormData();
+    return this.http.post(environment.serverUrl + 'challenges/accept/' + id, fd,  {headers: header});
   }
 }
