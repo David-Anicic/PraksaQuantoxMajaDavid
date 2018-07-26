@@ -10,15 +10,9 @@ export class StartPlayTheGameService {
 
   constructor(private http: HttpClient) { }
 
-<<<<<<< HEAD
-  startTheGame(id: number): Observable<any> {
-    const token = localStorage.getItem('token');
-    const bearerHeader: string = 'Bearer ' + token;
-=======
   startTheGame(id: number): Observable<any>
   {
     const bearerHeader: string = 'Bearer ' + localStorage.getItem('token');
->>>>>>> 277331e718cc2aa115c870212d9b7c399e1405e5
     const headers = new HttpHeaders().set('Authorization', bearerHeader);
     headers.set('Accept', 'application/json');
 

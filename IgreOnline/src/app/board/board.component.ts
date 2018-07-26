@@ -24,97 +24,73 @@ export class BoardComponent implements OnInit {
   constructor(private http: HttpClient, private startPlayService: StartPlayTheGameService) { }
 
   ngOnInit() {
-    this.player = 1;
-    this.gameOver = false;
-    for (let i = 0; i < 3; i++) {
-      for (let j = 0; j < 3; j++) {
-          this.srcImages[i][j] = 0;
-          this.m[i][j] = 'blank.png';
-      }
-    }
+    // this.player = 1;
+    // this.gameOver = false;
+    // for (let i = 0; i < 3; i++) {
+    //   for (let j = 0; j < 3; j++) {
+    //       this.srcImages[i][j] = 0;
+    //       this.m[i][j] = 'blank.png';
+    //   }
+    // }
 
-<<<<<<< HEAD
     // this.getAllUsers().subscribe(odgovor => {
     //   console.log(odgovor['data']);
     //   this.users = odgovor['data'];
     //   // console.log(this.users);
     // });
-=======
-    this.getAllUsers().subscribe(odgovor => {
-      console.log(odgovor['data']);
-      this.users = odgovor['data'];
-      // console.log(this.users);
-    });
 
-    this.gameCreatedSucc = false;
->>>>>>> 277331e718cc2aa115c870212d9b7c399e1405e5
+    // this.gameCreatedSucc = false;
   }
 
-  clicked(x: number, y: number): void {
-    if (this.srcImages[x][y] === 0) {
-      if (this.player === 1) {
-        this.srcImages[x][y] = 1;
-        this.m[x][y] = 'x.png';
-        this.player = 0;
-      } else {
-        this.srcImages[x][y] = 2;
-        this.player = 1;
-        this.m[x][y] = 'o.png';
-      }
-    }
-    this.checkStateOfTheMatrix();
-  }
-
-<<<<<<< HEAD
-  // getAllUsers(): Observable<User[]> {
-  //   const token = localStorage.getItem('token');
-  //   const bearerHeader: string = 'Bearer ' + token;
-=======
-  getAllUsers(): Observable<User[]> {
-    const bearerHeader: string = 'Bearer ' + localStorage.getItem('token');
->>>>>>> 277331e718cc2aa115c870212d9b7c399e1405e5
-
-  //   const headers = new HttpHeaders().set('Authorization', bearerHeader);
-  //   const url = environment.serverUrl + 'users';
-  //   console.log(url);
-  //   const formData = new FormData();
-  //   // formData.append('username', "");
-  //   return this.http.get<User[]>(url);
+  // clicked(x: number, y: number): void {
+  //   if (this.srcImages[x][y] === 0) {
+  //     if (this.player === 1) {
+  //       this.srcImages[x][y] = 1;
+  //       this.m[x][y] = 'x.png';
+  //       this.player = 0;
+  //     } else {
+  //       this.srcImages[x][y] = 2;
+  //       this.player = 1;
+  //       this.m[x][y] = 'o.png';
+  //     }
+  //   }
+  //   this.checkStateOfTheMatrix();
   // }
 
-  checkStateOfTheMatrix(): void {
-    for (let i = 0; i < 3; i++) {
-      for (let j = 0; j < 3; j++) {
-        if (this.srcImages[i][j] === 0) {
-          return;
-        }
-      }
-    }
+  // getAllUsers(): Observable<User[]> {
+  //   const bearerHeader: string = 'Bearer ' + localStorage.getItem('token');
 
-    this.gameOver = true;
-  }
+  // //   const headers = new HttpHeaders().set('Authorization', bearerHeader);
+  // //   const url = environment.serverUrl + 'users';
+  // //   console.log(url);
+  // //   const formData = new FormData();
+  // //   // formData.append('username', "");
+  // //   return this.http.get<User[]>(url);
+  // // }
 
-<<<<<<< HEAD
-  // startTheGame(): void {
-  //   console.log('usao');
-  //   console.log(this.selectedUser);
-  //   this.startPlayService.startTheGame(this.selectedUser.id).subscribe(odgovor => {
+  // checkStateOfTheMatrix(): void {
+  //   for (let i = 0; i < 3; i++) {
+  //     for (let j = 0; j < 3; j++) {
+  //       if (this.srcImages[i][j] === 0) {
+  //         return;
+  //       }
+  //     }
+  //   }
+
+  //   this.gameOver = true;
+  // }
+
+  // startTheGame(): void
+  // {
+  //   console.log("usao")
+  //   console.log(this.selectedUser)
+  //   this.startPlayService.startTheGame(this.selectedUser.id).subscribe(odgovor =>
+  //   {
   //     console.log(odgovor);
+  //     if (odgovor != undefined) {
+  //       console.log("dobro je"); this.gameCreatedSucc = true; }
+  //     else {
+  //       console.log("nije dobro"); this.gameCreatedSucc = false; }
   //   });
   // }
-=======
-  startTheGame(): void
-  {
-    console.log("usao")
-    console.log(this.selectedUser)
-    this.startPlayService.startTheGame(this.selectedUser.id).subscribe(odgovor =>
-    {
-      console.log(odgovor);
-      if (odgovor != undefined) {
-        console.log("dobro je"); this.gameCreatedSucc = true; }
-      else {
-        console.log("nije dobro"); this.gameCreatedSucc = false; }
-    });
-  }
->>>>>>> 277331e718cc2aa115c870212d9b7c399e1405e5
 }

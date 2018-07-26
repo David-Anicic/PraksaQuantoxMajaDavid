@@ -47,14 +47,8 @@ option {
     color: white;
 }
 
-<<<<<<< HEAD
-h2 {
-    color:white;
-    text-align: center;
-=======
 #msgGameCreated
 {
     color: green;
     margin-top: 5px;
->>>>>>> 277331e718cc2aa115c870212d9b7c399e1405e5
 }
