@@ -53,4 +53,17 @@ export class AuthService {
     return this.http.post(environment.serverUrl + 'users/register', fd, { headers: header });
   }
 
+  // authenticate(): Observable<boolean> {
+  //   let header = new HttpHeaders();
+
+  //   header = header.set('Authorization', localStorage.getItem('token'));
+  //   return this.http.get(environment.serverUrl + 'users', {headers: header}).pipe(map((response) => {
+  //     if (response['error']) {
+  //       return false;
+  //     }
+  //     return true;
+  //   }, error => {
+  //     return false;
+  //   }
+  // }
 }

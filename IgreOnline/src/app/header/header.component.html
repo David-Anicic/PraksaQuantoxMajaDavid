@@ -9,6 +9,9 @@
 		<li *ngIf="!isAuthenticated" style="float: right;" class="nav-item">
 			<a class="nav-link" routerLink="/auth">Login/Register</a>
 		</li>
+		<li *ngIf="isAuthenticated" style="float: right;" class="nav-item">
+			<a class="nav-link" routerLink="/lobby">Lobby</a>
+		</li>
 	</ul>
 	<ul class="navbar-nav ml-auto" style="float:right;">
 		<li *ngIf="isAuthenticated"  class="nav-item">

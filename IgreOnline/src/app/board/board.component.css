@@ -46,3 +46,8 @@ option {
 #players {
     color: white;
 }
+
+h2 {
+    color:white;
+    text-align: center;
+}

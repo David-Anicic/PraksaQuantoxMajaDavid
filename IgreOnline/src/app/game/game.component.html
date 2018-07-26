@@ -1,0 +1,9 @@
+<app-header></app-header>
+<div class="flexbox">
+  <div *ngFor="let user of users" class="userContainer">
+    <button class="challengeButton" (click)="challenge(user)">
+      {{user.name}}
+    </button>
+  </div>
+
+</div>

@@ -32,11 +32,11 @@ export class BoardComponent implements OnInit {
       }
     }
 
-    this.getAllUsers().subscribe(odgovor => {
-      console.log(odgovor['data']);
-      this.users = odgovor['data'];
-      // console.log(this.users);
-    });
+    // this.getAllUsers().subscribe(odgovor => {
+    //   console.log(odgovor['data']);
+    //   this.users = odgovor['data'];
+    //   // console.log(this.users);
+    // });
   }
 
   clicked(x: number, y: number): void {
@@ -54,16 +54,17 @@ export class BoardComponent implements OnInit {
     this.checkStateOfTheMatrix();
   }
 
-  getAllUsers(): Observable<User[]> {
-    const bearerHeader: string = 'Bearer ' + '';
+  // getAllUsers(): Observable<User[]> {
+  //   const token = localStorage.getItem('token');
+  //   const bearerHeader: string = 'Bearer ' + token;
 
-    const headers = new HttpHeaders().set('Authorization', bearerHeader);
-    const url = environment.serverUrl + 'users';
-    console.log(url);
-    const formData = new FormData();
-    // formData.append('username', "");
-    return this.http.get<User[]>(url);
-  }
+  //   const headers = new HttpHeaders().set('Authorization', bearerHeader);
+  //   const url = environment.serverUrl + 'users';
+  //   console.log(url);
+  //   const formData = new FormData();
+  //   // formData.append('username', "");
+  //   return this.http.get<User[]>(url);
+  // }
 
   checkStateOfTheMatrix(): void {
     for (let i = 0; i < 3; i++) {
@@ -77,13 +78,11 @@ export class BoardComponent implements OnInit {
     this.gameOver = true;
   }
 
-  startTheGame(): void
-  {
-    console.log("usao")
-    console.log(this.selectedUser)
-    this.startPlayService.startTheGame(this.selectedUser.id).subscribe(odgovor =>
-    {
-      console.log(odgovor);
-    });
-  }
+  // startTheGame(): void {
+  //   console.log('usao');
+  //   console.log(this.selectedUser);
+  //   this.startPlayService.startTheGame(this.selectedUser.id).subscribe(odgovor => {
+  //     console.log(odgovor);
+  //   });
+  // }
 }

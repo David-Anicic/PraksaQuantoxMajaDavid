@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
   register() {
     this.auth.register(this.user.name, this.user.email, this.user.password, this.password_confirmation).subscribe(data => {
       localStorage.setItem('token', data['access_token']);
-      this.router.navigate(['/board']);
+      this.router.navigate(['/lobby']);
     });
   }
 

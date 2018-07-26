@@ -12,6 +12,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { BoardComponent } from './board/board.component';
 import { HeaderComponent } from './header/header.component';
+import { LobbyComponent } from './lobby/lobby.component';
+import { ChallengeComponent } from './challenge/challenge.component';
+import { GameComponent } from './game/game.component';
+import { UsersComponent } from './users/users.component';
+import { GameService } from './game.service';
+import { UserService } from './user.service';
+
+declare global {
+  interface Window { io: any; }
+  interface Window { Echo: any; }
+}
 
 @NgModule({
   declarations: [
@@ -21,7 +32,11 @@ import { HeaderComponent } from './header/header.component';
     AuthPageComponent,
     HomeComponent,
     BoardComponent,
-    HeaderComponent
+    HeaderComponent,
+    LobbyComponent,
+    ChallengeComponent,
+    GameComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +46,7 @@ import { HeaderComponent } from './header/header.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [AuthService, HttpClientModule],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

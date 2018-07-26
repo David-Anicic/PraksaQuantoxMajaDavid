@@ -1,5 +1,6 @@
 <app-header></app-header>
 <div class='mainDiv'>
+    <h2>Tic-Tac-Toe</h2>
     <div class='part' id="boardTable">
         <table>
             <tr *ngFor="let value1 of values">
@@ -10,6 +11,7 @@
             <p style="color:red;margin:auto;">Game over!</p>
         </div>
     </div>
+<!-- 
     <div class='part' id='list'>
         <p id="lista">Choose an opponent:</p>
         <select [(ngModel)]="selectedUser" id="selUser">
@@ -17,5 +19,5 @@
             <option *ngFor="let user of users" [ngValue]="user">{{user.name}}</option>
         </select>
         <button class="btn btn-lg btn-secondary" type='submit' id='dugme' (click)='startTheGame()'>Start the game</button>
-    </div>
+    </div>  -->
 </div>
