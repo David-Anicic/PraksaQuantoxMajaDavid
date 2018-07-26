@@ -19,6 +19,7 @@ export class BoardComponent implements OnInit {
   gameOver: boolean;
   users: User[] = [];
   selectedUser: User;
+  gameCreatedSucc: boolean;
 
   constructor(private http: HttpClient, private startPlayService: StartPlayTheGameService) { }
 
@@ -32,11 +33,21 @@ export class BoardComponent implements OnInit {
       }
     }
 
+<<<<<<< HEAD
     // this.getAllUsers().subscribe(odgovor => {
     //   console.log(odgovor['data']);
     //   this.users = odgovor['data'];
     //   // console.log(this.users);
     // });
+=======
+    this.getAllUsers().subscribe(odgovor => {
+      console.log(odgovor['data']);
+      this.users = odgovor['data'];
+      // console.log(this.users);
+    });
+
+    this.gameCreatedSucc = false;
+>>>>>>> 277331e718cc2aa115c870212d9b7c399e1405e5
   }
 
   clicked(x: number, y: number): void {
@@ -54,9 +65,14 @@ export class BoardComponent implements OnInit {
     this.checkStateOfTheMatrix();
   }
 
+<<<<<<< HEAD
   // getAllUsers(): Observable<User[]> {
   //   const token = localStorage.getItem('token');
   //   const bearerHeader: string = 'Bearer ' + token;
+=======
+  getAllUsers(): Observable<User[]> {
+    const bearerHeader: string = 'Bearer ' + localStorage.getItem('token');
+>>>>>>> 277331e718cc2aa115c870212d9b7c399e1405e5
 
   //   const headers = new HttpHeaders().set('Authorization', bearerHeader);
   //   const url = environment.serverUrl + 'users';
@@ -78,6 +94,7 @@ export class BoardComponent implements OnInit {
     this.gameOver = true;
   }
 
+<<<<<<< HEAD
   // startTheGame(): void {
   //   console.log('usao');
   //   console.log(this.selectedUser);
@@ -85,4 +102,19 @@ export class BoardComponent implements OnInit {
   //     console.log(odgovor);
   //   });
   // }
+=======
+  startTheGame(): void
+  {
+    console.log("usao")
+    console.log(this.selectedUser)
+    this.startPlayService.startTheGame(this.selectedUser.id).subscribe(odgovor =>
+    {
+      console.log(odgovor);
+      if (odgovor != undefined) {
+        console.log("dobro je"); this.gameCreatedSucc = true; }
+      else {
+        console.log("nije dobro"); this.gameCreatedSucc = false; }
+    });
+  }
+>>>>>>> 277331e718cc2aa115c870212d9b7c399e1405e5
 }
