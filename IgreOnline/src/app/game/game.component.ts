@@ -1,32 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-// import { element } from '../../../node_modules/protractor';
 import { User } from 'User';
-// import { EchoService } from 'angular-laravel-echo';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../user.service';
 import { GameService } from '../game.service';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { AuthService } from '../auth.service';
 import { Echo } from 'laravel-echo';
 import * as io from 'socket.io-client';
-// const Echo = require('laravel-echo');
 
-// declare const Echo: any;
-
-
-
-// window.io = window.io;
-// window.Echo = window.Echo || {};
-
-declare global {
-    interface Window { io: any; }
-    interface Window { Echo: any; }
-}
-
-// declare var Echo: any;
-
-window.io = window.io;
-window.Echo = window.Echo || {};
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
@@ -34,53 +15,77 @@ window.Echo = window.Echo || {};
 })
 export class GameComponent implements OnInit {
 
+  values: number[] = [0, 1, 2];
+  srcImages: number[] = [0, 0, 0, 0, 0, 0, 0, 0];
+  m: string[] = ['blank.png' , 'blank.png', 'blank.png', 'blank.png', 'blank.png', 'blank.png', 'blank.png', 'blank.png'];
+  player: number;
+  gameOver: boolean;
   users: User[] = [];
-  signed = false;
-  userGames = [];
+  selectedUser: User;
+  gameCreatedSucc: boolean;
 
-  constructor(private userService: UserService,
-    private gameService: GameService, private router: Router, private authService: AuthService) {
+
+  private cells: string[] = [];
+  private turn = 'x';
+  private gameover = false;
+  private winner = null;
+
+  gameId: any;
+
+  constructor(private router: Router, private gameService: GameService, private route: ActivatedRoute) {
     window.io = io;
   }
 
+  clicked(vred) {
+    console.log(vred);
+  }
+
   ngOnInit() {
-
-    this.signed = this.authService.isAuthenticated();
-
-    const token = 'Bearer ' + localStorage.getItem('access_token');
-
-    window.Echo = new Echo(
-      {
+    const token = 'Bearer ' + localStorage.getItem('token');
+    window.Echo = new Echo({
       broadcaster: 'socket.io',
       host: 'http://game-project.local:6001',
-
-        auth:
-        {
+      auth:
+      {
           headers:
-            {
+          {
               'Authorization': token
-            }
-        }
-
+          }
+      }
     });
 
+    this.route.params.subscribe(param => {
+      if (param['id']) {
+        this.gameId = param['id'];
 
-  window.Echo.join('lobby').here((users) => {
-    users.forEach(element => {
-      this.users.push(element);
+        window.Echo.private('game.' + this.gameId).listen('MoveEvent', data => {
+          console.log(data);
+          // if (this.cells[data['take']['position'] - 1] === null) {
+          //   this.cells[data['take']['position'] - 1] = data['take']['symbol'];
+          // }
+        }).listen('NewGameOverEvent', data => {
+          console.log(data, 'game over');
+        });
+      }
     });
-  }).joining((user) => {
-    if (this.users.indexOf(user) === -1) {
-      this.users.push(user);
+
+    for (let i = 0; i < 9; i++) {
+      this.cells[i] = null;
     }
-  }).leaving((user) => {
-    this.users.splice(this.users.indexOf(user));
-  });
-
-
-  window.Echo.private('user.' + localStorage.getItem('id')).listen('ChallengeEvent', (data) => {
-    console.log(data);
-  });
-}
+  }
+  init() {
+    for (let i = 0; i < 9; i++) {
+      this.cells[i] = null;
+    }
+  }
+  clickHandler(position) {
+/*
+    this.gameService.take(position, this.gameId).subscribe(data => {
+      console.log(data, 'response');
+      // if (this.cells[data['data']['position']-1] === null) {
+      //        this.cells[data['data']['position']-1] = data['data']['symbol'];
+      // }
+    });*/
+  }
 }
 

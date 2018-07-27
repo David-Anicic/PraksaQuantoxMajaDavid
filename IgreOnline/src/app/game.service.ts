@@ -43,4 +43,21 @@ export class GameService {
     const fd = new FormData();
     return this.http.post(environment.serverUrl + 'challenges/accept/' + id, fd,  {headers: header});
   }
+
+  cancelChallenge(id) {
+    let header = new HttpHeaders();
+    header = header.set('Authorization', 'Bearer ' + localStorage.getItem('token'));
+    const fd = new FormData();
+    return this.http.post(environment.serverUrl + 'challenges/reject/' + id, fd,  {headers: header});
+  }
+
+  take(position, gameId) {
+    console.log('Pozicija ' + position);
+    console.log('Igra ' + gameId);
+    let header = new HttpHeaders();
+    header = header.set('Authorization', 'Bearer ' + localStorage.getItem('token'));
+    const fd = new FormData();
+    return this.http.post(environment.serverUrl + 'games/' + gameId + '/' + position, fd, {headers: header});
+  }
+
 }

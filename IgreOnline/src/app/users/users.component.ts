@@ -69,19 +69,31 @@ export class UsersComponent implements OnInit {
     console.log('Izazvao sam: ');
     console.log(this.selectedUser);
     this.gameService.createGame(this.selectedUser).subscribe(data => {
+      console.log('game');
       console.log(data);
       window.Echo.private('challenge.' + data['pivot']['id']).listen('GameEvent', (data2) => {
-        console.log(data2);
+        console.log('data2:');
+        console.log(data2['game']['id']);
+        this.router.navigate(['/board/' + data2['game']['id'] ]);
       });
-      // this.router.navigate(['/board']);
     });
   }
 
   accept(challenge) {
     console.log(challenge.challenger['id']);
     this.gameService.acceptChallenge(challenge.challenger['id']).subscribe(data => {
+      console.log('Accept');
       console.log(data);
-      this.router.navigate(['/board']);
+      console.log('id: ' +  data['data']['id']);
+      this.router.navigate(['/board/' + data['data']['id']]);
+    });
+  }
+
+  cancel(challenge) {
+    console.log('Cancel ' + challenge.challenger['id']);
+    this.gameService.cancelChallenge(challenge.challenger['id']).subscribe(data => {
+      console.log(data);
+      this.router.navigate(['/users']);
     });
   }
 }

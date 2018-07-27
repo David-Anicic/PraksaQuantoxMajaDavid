@@ -19,7 +19,7 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'board',
+    path: 'board/:id',
     component: BoardComponent
   },
   {

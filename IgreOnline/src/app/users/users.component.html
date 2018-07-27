@@ -13,16 +13,16 @@
                         <button class="btn btn-lg btn-secondary" type='submit' id='dugme' (click)='challenge()'>Challenge</button>
                     </div>
                 </div>
-                <div class="izazovi">
+                <div id="izazovi">
                   <div *ngFor="let challenge of challenges" class="row challenge">
                       <h2>Challengers</h2>
                     <div>
                       {{challenge.challenger.name}}
                     </div>
-                    <button  id="acc" (click)="accept(challenge)">
+                    <button class="btn btn-lg btn-secondary" id="acc" (click)="accept(challenge)">
                         Accept
                     </button>
-                    <button id="can"  (click)="cancel(challenge)">
+                    <button id="can" class="btn btn-lg btn-secondary" (click)="cancel(challenge)">
                         Cancel
                     </button>
                   </div>    
