@@ -18,7 +18,7 @@ import { ActivatedRoute, Router } from '../../../node_modules/@angular/router';
 export class BoardComponent implements OnInit {
 
   values: number[] = [0, 1, 2];
-  srcImages: number[] = [0, 0, 0, 0, 0, 0, 0, 0];
+  srcImages: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   m: string[] = ['blank.png' , 'blank.png', 'blank.png', 'blank.png', 'blank.png', 'blank.png',
   'blank.png', 'blank.png', 'blank.png', 'blank.png'];
   player: number;
@@ -26,6 +26,9 @@ export class BoardComponent implements OnInit {
   users: User[] = [];
   selectedUser: User;
   gameCreatedSucc: boolean;
+  win = false;
+  lost = false;
+  draw = false;
 
   gameId: any;
 
@@ -78,8 +81,26 @@ export class BoardComponent implements OnInit {
           const poz = data['move']['position'];
           this.srcImages[poz] = 1;
           this.m[poz] = data['move']['field_type'] + '.png';
-        }).listen('NewGameOverEvent', data => {
-          console.log(data, 'game over');
+        }).listen('GameOverEvent', data => {
+          const myId = localStorage.getItem('userID');
+          console.log('my id:');
+          console.log(myId);
+          if (data['game']['winner'] != null) {
+            // tslint:disable-next-line:triple-equals
+            if (data['game']['winner'] == myId ) {
+              console.log('You won');
+              this.win = true;
+            } else {
+              console.log('You lost');
+              this.lost = true;
+            }
+          } else {
+            if (data['game']['draw'] !== 0) {
+              console.log('Draw');
+              this.draw = true;
+            }
+          }
+          console.log(data);
         });
       }
     });

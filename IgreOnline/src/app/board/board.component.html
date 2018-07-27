@@ -1,6 +1,17 @@
 <app-header></app-header>
 <div class='mainDiv'>
+        <div *ngIf="win" id='pobednik'>
+                <h2> You WIN!!! </h2>    
+            </div>
+            <div *ngIf="lost" id='gubitnik'>
+                <h2> You LOST!!! </h2>
+            </div>
+            <div *ngIf="draw" id='jednako'>
+               <h2>  Draw!!! </h2>
+            </div>
+
     <h2>Tic-Tac-Toe</h2>
+    
     <div class='part' id="boardTable">
         <table>
             <!-- <tr *ngFor="let value1 of values">

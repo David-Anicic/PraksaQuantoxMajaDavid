@@ -55,4 +55,27 @@ option {
 
 h2{
     color: white;
+    text-align: center;
+}
+
+
+#pobednik {
+    color: white;
+    background-color: green;
+    border-color: white 1px solid;
+    border-radius: 5px;
+}
+
+#gubitnik {
+    color: white;
+    background-color: red;
+    border-color: white 1px solid;
+    border-radius: 5px;
+}
+
+#jednako {
+    color: black;
+    background-color: white;
+    border-color: white 1px solid;
+    border-radius: 5px;
 }

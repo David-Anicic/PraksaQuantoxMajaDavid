@@ -10,33 +10,44 @@
     color:white;
 }
 
-option {
-    width: 50px;
-    height: 15px;
+option {   
+    width: 90px;
+    height: 25px;
     color: green;
+    font-weight: bold;
 }
 
-.constainer {
+
+select {   
+    width: 90px;
+    height: 25px;
+    color: green;
+    font-weight: bold;
+}
+
+.container {
     margin: 0 auto;
-    position: relative;
-    left: 100px;
+    /* position: relative;
+    left: 100px; */
     color: white;
+    display: table;
 }
 
 #acc {
     background-color: green;
     color: white;
-    width: 100px;
-    height: 30px;
 }
 
 #can {
     background-color: red;
     color: white;
-    width: 100px;
-    height: 30px;
+    margin-left: 10px;
 }
 
 h2 {
+    color: white;
+}
+
+#ch {
     color: white;
 }

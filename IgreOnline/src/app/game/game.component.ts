@@ -63,7 +63,7 @@ export class GameComponent implements OnInit {
           // if (this.cells[data['take']['position'] - 1] === null) {
           //   this.cells[data['take']['position'] - 1] = data['take']['symbol'];
           // }
-        }).listen('NewGameOverEvent', data => {
+        }).listen('GameOverEvent', data => {
           console.log(data, 'game over');
         });
       }

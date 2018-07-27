@@ -6,7 +6,7 @@
                     <div class='part' id='list'>
                         <h2 id="lista">Already applied users:</h2>
                         <select [(ngModel)]="selectedUser" id="selUser">
-                            <option *ngFor="let user of users" [ngValue]="user.id">{{user.name}}</option>
+                            <option *ngFor="let user of users" [ngValue]="user.id"><h3>{{user.name}}</h3></option>
                         </select>
                         <br>
                         <br>
@@ -16,7 +16,7 @@
                 <div id="izazovi">
                   <div *ngFor="let challenge of challenges" class="row challenge">
                       <h2>Challengers</h2>
-                    <div>
+                    <div id='ch'>
                       {{challenge.challenger.name}}
                     </div>
                     <button class="btn btn-lg btn-secondary" id="acc" (click)="accept(challenge)">
