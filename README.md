@@ -1,4 +1,4 @@
-This repository contains the hole frontend code of application Tic-Tac-Toe.
+This repository contains the whole frontend code of application Tic-Tac-Toe.
 
 Clone the project typing: git clone https://github.com/David-Anicic/PraksaQuantoxMajaDavid.git
 
